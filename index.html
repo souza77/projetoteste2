@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Busca de Dados</title>
+</head>
+<body>
+
+	<table>
+		<th>
+			<td>Nome</td>
+			<td>id funcional</td>
+			<td>RG</td>
+			<td>CPF</td>
+			<td>Lota&ccedil;&atilde;o</td>
+		</th>
+		<tbody id="corpo">
+			
+		</tbody>
+
+	</table>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	
+	const dadosExcel = require('./projetoteste2/buscaDadosExcel')
+
+	
+	const endereco = 'http://ev.pmerj.rj.gov.br/coronel1.php'
+	const dadosExtraidos = dadosExcel()
+	
+	let informacoes = [] 
+
+	axios.post(endereco, { cpf: '05316555716' })
+	  .then((response) => {
+	    console.log(response.data)
+	  })
+
+
+	/*if(dadosExtraidos === false){
+		alert('Erro ao extrair  dados do Excel')
+	}
+	else{
+		informacoes = dadosExtraidos.map((dado, indice) => {
+		axios.post(endereco, { cpf: dado.cpf })
+		  .then((response) => {
+		    return response
+		  })
+		})
+
+		let tabela = document.getElementById('corpo')
+
+		informacoes.forEach((dado, indice) => {
+
+			let linha = document.createElement('tr')
+
+			let nome = document.createElement('td')
+			nome.textContent = dado.nome
+			linha.appendChild(nome)
+			
+			let idfuncional = document.createElement('td')
+			idfuncional.textContent= dado.id_funcional
+			linha.appendchild(idfuncional)
+			
+			let rg = document.createElement('td')
+			rg.textContent = dado.rg
+			linha.appendchild(rg)
+
+			let cpf = document.createElement('td')
+			cpf.textContent = dado.cpf
+			linha.appendchild(cpf)
+
+			let lotacao = document.createElement('td')
+			lotacao.textContent = dado.lotacao
+			linha.appendchild(lotacao)
+
+			tabela.appendChild(linha)
+
+		})		
+	}	*/
+
+
+</script>
+</html>
